@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Livraria.Shared\Livraria.Shared.csproj" />
     <ProjectReference Include="..\Livraria.Domain\Livraria.Domain.csproj" />
   </ItemGroup>
 

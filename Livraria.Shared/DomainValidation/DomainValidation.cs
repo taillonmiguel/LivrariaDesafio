@@ -1,5 +1,6 @@
 ﻿using Livraria.Shared.CustomException;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Livraria.Shared.DomainValidation
 {
