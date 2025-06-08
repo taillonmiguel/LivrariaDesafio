@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  livraria.api:
+    image: livrariaapi:dev
+    container_name: livraria_api
+    build:
+      context: .
+      dockerfile: Livraria.Api/Dockerfile
+    ports:
+      - "5124:8080"
+    networks:
+      - livraria_net
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+
+networks:
+  livraria_net:
+    external: true

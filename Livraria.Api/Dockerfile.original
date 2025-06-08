@@ -9,12 +9,10 @@ EXPOSE 8081
 
 
 # This stage is used to build the service project
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Livraria.Api/Livraria.Api.csproj", "Livraria.Api/"]
-COPY ["Livraria.Infra/Livraria.Infra.csproj", "Livraria.Infra/"]
-COPY ["Livraria.Domain/Livraria.Domain.csproj", "Livraria.Domain/"]
 RUN dotnet restore "./Livraria.Api/Livraria.Api.csproj"
 COPY . .
 WORKDIR "/src/Livraria.Api"
