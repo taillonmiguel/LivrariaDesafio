@@ -1,0 +1,41 @@
+## .NET build folders
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+
+## ASP.NET Secrets
+secrets.json
+appsettings.*.local.json
+
+## Logs
+*.log
+
+## Docker artifacts
+**/postgres-data/
+**/pgdata/
+*.pid
+*.sock
+
+## JetBrains Rider
+.idea/
+
+## Visual Studio Code
+.vscode/
+
+## Node / React (caso crie frontend)
+node_modules/
+dist/
+.env
+
+## OS-generated files
+.DS_Store
+Thumbs.db
