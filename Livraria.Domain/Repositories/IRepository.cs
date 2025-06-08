@@ -2,14 +2,16 @@
 
 namespace Livraria.Domain.Repositories
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TEntity> where TEntity : class
     {
-        Task<T> GetByIdAsync(Guid id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task AddAsync(T entity);
-        void Update(T entity);
-        void Remove(T entity);
+        Task<TEntity> GetByIdAsync(Guid id);
+        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
+        Task AddAsync(TEntity entity);
+        void Update(TEntity entity);
+        void Remove(TEntity entity);
         Task SaveChangesAsync();
+        Task<bool> ExistsAsync(Guid id);
+        Task<bool> ExistsAsync(Expression<Func<TEntity, object>> property, object value);
     }
 }

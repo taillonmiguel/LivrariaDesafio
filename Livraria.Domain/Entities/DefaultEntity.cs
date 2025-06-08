@@ -1,6 +1,8 @@
-﻿namespace Livraria.Domain.Entities
+﻿using Livraria.Shared.Data;
+
+namespace Livraria.Domain.Entities
 {
-    public abstract class DefaultEntity
+    public abstract class DefaultEntity : IHaveId
     {
 
         public virtual Guid Id { get; set; }

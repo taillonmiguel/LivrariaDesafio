@@ -4,8 +4,7 @@ using Livraria.Infra.Context;
 
 namespace Livraria.Infra.Repositories
 {
-    public class GeneroRepository : Repository<Genero>, IGeneroRepository
+    public class GeneroRepository(AppDbContext _dbContext) : Repository<Genero>(_dbContext), IGeneroRepository
     {
-        public GeneroRepository(AppDbContext context) : base(context) { }
     }
 }
