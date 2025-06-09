@@ -12,7 +12,6 @@ namespace Livraria.Api.Controllers.v1
     [ApiController]
     [Route("Livro/v1")]
     [Produces("application/json")]
-    [Authorize]
     public class LivroController : BaseApiController<LivroController>
     {
         private readonly ILivroService _livroService;

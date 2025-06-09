@@ -12,7 +12,6 @@ namespace Livraria.Api.Controllers.v1
     [ApiController]
     [Route("Genero/v1")]
     [Produces("application/json")]
-    [Authorize]
     public class GeneroController : BaseApiController<GeneroController>
     {
         private readonly IGeneroService _generoService;

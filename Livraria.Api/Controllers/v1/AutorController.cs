@@ -12,7 +12,6 @@ namespace Livraria.Api.Controllers.v1
     [ApiController]
     [Route("Autor/v1")]
     [Produces("application/json")]
-    [Authorize]
     public class AutorController : BaseApiController<AutorController>
     {
         private readonly IAutorService _autorService;

@@ -17,7 +17,7 @@ namespace Livraria.Domain.Entities
         {
             Id = Guid.NewGuid();
             Active = true;
-            DataCriacao = DateTime.Now;
+            DataCriacao = DateTime.UtcNow;
         }
     }
 }

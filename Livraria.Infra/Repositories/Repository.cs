@@ -7,10 +7,16 @@ using System.Linq.Expressions;
 
 namespace Livraria.Infra.Repositories
 {
-    public class Repository<TEntity>(DbContext _context) : IRepository<TEntity> where TEntity : class, IHaveId
+    public class Repository<TEntity>  : IRepository<TEntity> where TEntity : class, IHaveId
     {
         protected readonly DbContext _context;
         protected readonly DbSet<TEntity> _dbSet;
+
+        public Repository(DbContext context)
+        {
+            _context = context;
+            _dbSet = context.Set<TEntity>();
+        }
 
         public async Task<TEntity> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
 

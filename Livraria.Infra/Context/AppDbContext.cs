@@ -1,4 +1,5 @@
 ﻿using Livraria.Domain.Entities;
+using Livraria.Infra.Seeds;
 using Microsoft.EntityFrameworkCore;
 
 namespace Livraria.Infra.Context
@@ -19,7 +20,7 @@ namespace Livraria.Infra.Context
             {
                 if (entry.State == EntityState.Modified)
                 {
-                    entry.Entity.DataAtualizacao = DateTime.Now;
+                    entry.Entity.DataAtualizacao = DateTime.UtcNow;
                 }
             }
 
@@ -30,6 +31,10 @@ namespace Livraria.Infra.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
+
+            AutorSeed.Seed(modelBuilder);
+            GeneroSeed.Seed(modelBuilder);
+            LivroSeed.Seed(modelBuilder);
         }
     }
 }

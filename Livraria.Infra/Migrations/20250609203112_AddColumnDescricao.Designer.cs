@@ -3,6 +3,7 @@ using System;
 using Livraria.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Livraria.Infra.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250609203112_AddColumnDescricao")]
+    partial class AddColumnDescricao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,29 +48,6 @@ namespace Livraria.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Autores", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("0c1fa73a-91e9-456b-91ae-90e03c83d841"),
-                            Active = true,
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2121),
-                            Nome = "George Orwell"
-                        },
-                        new
-                        {
-                            Id = new Guid("14a3de89-71ea-47dc-bfd2-2139de3d2fd0"),
-                            Active = true,
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2133),
-                            Nome = "J.K. Rowling"
-                        },
-                        new
-                        {
-                            Id = new Guid("845b1ad1-9d84-4e56-bc1e-94eb55f71656"),
-                            Active = true,
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2136),
-                            Nome = "J.R.R. Tolkien"
-                        });
                 });
 
             modelBuilder.Entity("Livraria.Domain.Entities.Genero", b =>
@@ -93,29 +73,6 @@ namespace Livraria.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Generos", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("4fbd0572-d395-4dfb-ae7c-4e73887e1869"),
-                            Active = true,
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2229),
-                            Nome = "Ficção Científica"
-                        },
-                        new
-                        {
-                            Id = new Guid("2cb8b46e-6ad6-4b5e-9104-fbfe25b7d836"),
-                            Active = true,
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2232),
-                            Nome = "Fantasia"
-                        },
-                        new
-                        {
-                            Id = new Guid("e77ebac7-9af4-4e9f-8e57-5367fefadcd2"),
-                            Active = true,
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2234),
-                            Nome = "Distopia"
-                        });
                 });
 
             modelBuilder.Entity("Livraria.Domain.Entities.Livro", b =>
@@ -155,38 +112,6 @@ namespace Livraria.Infra.Migrations
                     b.HasIndex("GeneroId");
 
                     b.ToTable("Livros", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("ffb6cf11-9b86-4b86-8f23-d00ff6d04fd4"),
-                            Active = true,
-                            AutorId = new Guid("0c1fa73a-91e9-456b-91ae-90e03c83d841"),
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2257),
-                            Descricao = "Uma distopia totalitária",
-                            GeneroId = new Guid("e77ebac7-9af4-4e9f-8e57-5367fefadcd2"),
-                            Titulo = "1984"
-                        },
-                        new
-                        {
-                            Id = new Guid("2f8ea68e-f3d9-4d4a-9e87-ecab72a3fdf2"),
-                            Active = true,
-                            AutorId = new Guid("14a3de89-71ea-47dc-bfd2-2139de3d2fd0"),
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2271),
-                            Descricao = "Início da saga mágica",
-                            GeneroId = new Guid("2cb8b46e-6ad6-4b5e-9104-fbfe25b7d836"),
-                            Titulo = "Harry Potter e a Pedra Filosofal"
-                        },
-                        new
-                        {
-                            Id = new Guid("a4fd96be-7607-41f0-a2c6-b30b338efcec"),
-                            Active = true,
-                            AutorId = new Guid("845b1ad1-9d84-4e56-bc1e-94eb55f71656"),
-                            DataCriacao = new DateTime(2025, 6, 9, 20, 34, 12, 329, DateTimeKind.Utc).AddTicks(2274),
-                            Descricao = "Uma jornada épica pela Terra Média",
-                            GeneroId = new Guid("2cb8b46e-6ad6-4b5e-9104-fbfe25b7d836"),
-                            Titulo = "O Senhor dos Anéis"
-                        });
                 });
 
             modelBuilder.Entity("Livraria.Domain.Entities.Livro", b =>
