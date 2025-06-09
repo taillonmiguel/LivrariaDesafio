@@ -25,7 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Livraria.Application\Livraria.Application.csproj" />
 		<ProjectReference Include="..\Livraria.Infra\Livraria.Infra.csproj" />
+		<ProjectReference Include="..\Livraria.Shared\Livraria.Shared.csproj" />
 	</ItemGroup>
 
 </Project>

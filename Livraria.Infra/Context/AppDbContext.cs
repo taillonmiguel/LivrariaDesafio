@@ -11,6 +11,8 @@ namespace Livraria.Infra.Context
         public DbSet<Autor> Autores { get; set; }
         public DbSet<Livro> Livros { get; set; }
 
+        public DbContext Instance => this;
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             foreach (var entry in ChangeTracker.Entries<DefaultEntity>())

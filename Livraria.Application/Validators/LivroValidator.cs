@@ -6,7 +6,7 @@ using Livraria.Shared.DomainValidation;
 
 namespace Livraria.Application.Validators
 {
-    internal class LivroValidator : ILivroValidator
+    public class LivroValidator : ILivroValidator
     {
         private readonly IDomainValidation _domainValidation;
         private readonly ILivroRepository _livroRepository;
