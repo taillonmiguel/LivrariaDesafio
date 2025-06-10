@@ -38,7 +38,10 @@ namespace Livraria.Application.Services
         {
             var livro = await _validator.ValidarExiste(id);
 
-            _domainValidation.EnsureValid();
+            if (livro is null)
+            {
+                return null!;
+            }
 
             return new LivroViewModel
             {
@@ -59,7 +62,6 @@ namespace Livraria.Application.Services
             var livro = new Livro(dto.Titulo, dto.Descricao, dto.AutorId, dto.GeneroId);
 
             await _repository.AddAsync(livro);
-            await _repository.SaveChangesAsync();
 
             return new LivroViewModel
             {
@@ -79,7 +81,6 @@ namespace Livraria.Application.Services
 
             livro.Atualizar(dto.Titulo, dto.Descricao, dto.AutorId, dto.GeneroId);
             _repository.Update(livro);
-            await _repository.SaveChangesAsync();
 
             return new LivroViewModel
             {
@@ -98,7 +99,6 @@ namespace Livraria.Application.Services
             _domainValidation.EnsureValid();
 
             _repository.Remove(livro);
-            await _repository.SaveChangesAsync();
         }
     }
 }

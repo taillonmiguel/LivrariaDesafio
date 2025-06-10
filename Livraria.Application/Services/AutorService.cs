@@ -31,7 +31,10 @@ namespace Livraria.Application.Services
         {
             var autor = await _validator.ValidarExiste(id);
 
-            _domainValidation.EnsureValid();
+            if(autor is null)
+            {
+                return null!;
+            }
 
             return new AutorViewModel { Id = autor.Id, Nome = autor.Nome };
         }
@@ -45,7 +48,6 @@ namespace Livraria.Application.Services
             var autor = new Autor(dto.Nome);
 
             await _repository.AddAsync(autor);
-            await _repository.SaveChangesAsync();
 
             return new AutorViewModel { Id = autor.Id, Nome = autor.Nome };
         }
@@ -58,7 +60,6 @@ namespace Livraria.Application.Services
 
             autor.Atualizar(dto.Nome);
             _repository.Update(autor);
-            await _repository.SaveChangesAsync();
 
             return new AutorViewModel { Id = autor.Id, Nome = autor.Nome };
         }
@@ -70,7 +71,6 @@ namespace Livraria.Application.Services
             _domainValidation.EnsureValid();
 
             _repository.Remove(autor);
-            await _repository.SaveChangesAsync();
         }
     }
 }

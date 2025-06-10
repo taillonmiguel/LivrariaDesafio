@@ -36,8 +36,8 @@ namespace Livraria.Api.Controllers.v1
             {
                 var response = await _livroService.GetByIdAsync(id);
 
-                if (response == null)
-                    _domainValidation.Add("Livro não encontrado.");
+                if (response is null)
+                    return NotFound();
 
                 return Ok(response);
             });

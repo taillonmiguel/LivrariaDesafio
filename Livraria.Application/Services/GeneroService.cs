@@ -28,11 +28,14 @@ namespace Livraria.Application.Services
             return generos.Select(x => new GeneroViewModel { Id = x.Id, Nome = x.Nome });
         }
 
-        public async Task<GeneroViewModel> GetByIdAsync(Guid id)
+        public async Task<GeneroViewModel?> GetByIdAsync(Guid id)
         {
-            var genero = await _generoValidator.ValidarExiste(id);
+            var genero = await _repository.GetByIdAsync(id);
 
-            _domainValidation.EnsureValid();
+            if (genero is null) 
+            {
+                return null;
+            }
 
             return new GeneroViewModel { Id = genero.Id, Nome = genero.Nome };
         }
@@ -44,9 +47,7 @@ namespace Livraria.Application.Services
             _domainValidation.EnsureValid();
 
             var genero = new Genero(dto.Nome);
-
             await _repository.AddAsync(genero);
-            await _repository.SaveChangesAsync();
 
             return new GeneroViewModel { Id = genero.Id, Nome = genero.Nome };
         }
@@ -59,7 +60,7 @@ namespace Livraria.Application.Services
 
             genero.Atualizar(dto.Nome);
             _repository.Update(genero);
-            await _repository.SaveChangesAsync();
+
             return new GeneroViewModel { Id = genero.Id, Nome = genero.Nome };
         }
 
@@ -70,7 +71,6 @@ namespace Livraria.Application.Services
             _domainValidation.EnsureValid();
 
             _repository.Remove(genero);
-            await _repository.SaveChangesAsync();
         }
     }
 }

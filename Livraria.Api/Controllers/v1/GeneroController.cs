@@ -37,8 +37,8 @@ namespace Livraria.Api.Controllers.v1
             {
                 var response = await _generoService.GetByIdAsync(id);
 
-                if (response == null)
-                    _domainValidation.Add("Gênero não encontrado.");
+                if (response is null)
+                    return NotFound();
 
                 return Ok(response);
             });
@@ -51,7 +51,14 @@ namespace Livraria.Api.Controllers.v1
             return await ExecuteAsync(async () =>
             {
                 var response = await _generoService.GetAllAsync();
-                return Ok(response);
+
+                if (response != null)
+                {
+                    return Ok(response);
+                }
+
+                return NotFound();
+
             });
         }
 

@@ -34,6 +34,10 @@ namespace Livraria.Api.Controllers.v1
             return await ExecuteAsync(async () =>
             {
                 var response = await _autorService.GetByIdAsync(id);
+
+                if (response is null)
+                    return NotFound();
+
                 return Ok(response);
             });
         }
