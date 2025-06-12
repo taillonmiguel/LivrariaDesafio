@@ -49,12 +49,18 @@ Este projeto, chamado **Livraria**, é uma **API RESTful** em **.NET 8.0**, com 
 
 2. Aplique as migrações para criar o schema:
 
+  # **na raiz do repositório**
    **Opção A: Usando CLI local**
+   ```bash
+   dotnet tool install -g dotnet-ef
+   ```
 
    ```bash
-   cd Livraria.Api
-   dotnet ef database update --environment Development
-   cd ..
+docker-compose exec livraria_api \
+  dotnet ef database update \
+    --project /app/Livraria.Infra \
+    --startup-project /app/Livraria.Api \
+    --context AppDbContext
    ```
 
    **Opção B: Diretamente no container da API**
@@ -64,7 +70,7 @@ Este projeto, chamado **Livraria**, é uma **API RESTful** em **.NET 8.0**, com 
      dotnet ef database update --environment Development
    ```
 
-  ##Opção C. Atualizar o banco pelo Visual Studio
+  **Opção C. Atualizar o banco pelo Visual Studio**
 
 1. Abra a solução `Livraria.sln` no Visual Studio.
 2. No **Solution Explorer**, clique com o botão direito em **Livraria.Api** e escolha **Definir como projeto de inicialização**.  
