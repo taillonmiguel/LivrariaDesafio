@@ -71,7 +71,7 @@ Este projeto, chamado **Livraria**, é uma **API RESTful** em **.NET 8.0**, com 
 3. No menu superior, vá em **Ferramentas > Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.  
 4. Na janela do console:
    - Em **Projeto de inicialização** (Startup project), confirme que está **Livraria.Api**.  
-   - Em **Projeto padrão** ou **docker-compose**, selecione **Livraria.Infra**.  
+   - Em **Projeto padrão** (Default project), selecione **Livraria.Infra**
 5. Execute o comando:
 
    ```powershell
