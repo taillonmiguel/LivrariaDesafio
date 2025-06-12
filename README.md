@@ -1,10 +1,10 @@
 # Livraria
 
-Este projeto, chamado **Livraria**, È uma **API RESTful** em **.NET 8.0**, com **Entity Framework Core** e **PostgreSQL**, orquestrados via **Docker Compose**. Permite **criar**, **editar** e **deletar** as entidades **Livro**, **Autor** e **GÍnero**.
+Este projeto, chamado **Livraria**, √© uma **API RESTful** em **.NET 8.0**, com **Entity Framework Core** e **PostgreSQL**, orquestrados via **Docker Compose**. Permite **criar**, **editar** e **deletar** as entidades **Livro**, **Autor** e **G√™nero**.
 
 ---
 
-## PrÈ-requisitos
+## Pr√©-requisitos
 
 * [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 * [Docker & Docker Compose](https://docs.docker.com/)
@@ -17,16 +17,16 @@ Este projeto, chamado **Livraria**, È uma **API RESTful** em **.NET 8.0**, com *
 
 ---
 
-## ConfiguraÁ„o
+## Configura√ß√£o
 
-1. Clone o repositÛrio:
+1. Clone o reposit√≥rio:
 
    ```bash
    git clone https://github.com/taillonmiguel/LivrariaDesafio.git
    cd LivrariaDesafio
    ```
 
-2. Verifique o arquivo `.env` existente na raiz. Ele j· contÈm as vari·veis padr„o para PostgreSQL e ASP.NET Core:
+2. Verifique o arquivo `.env` existente na raiz. Ele j√° cont√©m as vari√°veis padr√£o para PostgreSQL e ASP.NET Core:
 
    ```dotenv
    POSTGRES_USER=postgres
@@ -35,7 +35,7 @@ Este projeto, chamado **Livraria**, È uma **API RESTful** em **.NET 8.0**, com *
    ASPNETCORE_ENVIRONMENT=Development
    ```
 
-   Caso queira usar outros nomes, ajuste aqui e no docker-compose (ele referencia essas vari·veis).
+   Caso queira usar outros nomes, ajuste aqui e no docker-compose (ele referencia essas vari√°veis).
 
 ---
 
@@ -47,9 +47,9 @@ Este projeto, chamado **Livraria**, È uma **API RESTful** em **.NET 8.0**, com *
    docker-compose up --build -d
    ```
 
-2. Aplique as migraÁıes para criar o schema:
+2. Aplique as migra√ß√µes para criar o schema:
 
-   **OpÁ„o A: Usando CLI local**
+   **Op√ß√£o A: Usando CLI local**
 
    ```bash
    cd Livraria.Api
@@ -57,31 +57,33 @@ Este projeto, chamado **Livraria**, È uma **API RESTful** em **.NET 8.0**, com *
    cd ..
    ```
 
-   **OpÁ„o B: Diretamente no container da API**
+   **Op√ß√£o B: Diretamente no container da API**
 
    ```bash
    docker-compose exec livraria_api \
      dotnet ef database update --environment Development
    ```
 
-   **OpÁ„o C: Pelo Visual Studio**
+  ##Op√ß√£o C. Atualizar o banco pelo Visual Studio
 
-   1. Abra a soluÁ„o no Visual Studio.
-   2. V· em **Ferramentas > Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
-   3. No dropdown **Projeto padr„o**, selecione **Livraria.Api**.
-   4. No Package Manager Console, selecione **Livraria.Infra**.   
-   5. Execute:
+1. Abra a solu√ß√£o `Livraria.sln` no Visual Studio.
+2. No **Solution Explorer**, clique com o bot√£o direito em **Livraria.Api** e escolha **Definir como projeto de inicializa√ß√£o**.  
+3. No menu superior, v√° em **Ferramentas > Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.  
+4. Na janela do console:
+   - Em **Projeto de inicializa√ß√£o** (Startup project), confirme que est√° **Livraria.Api**.  
+   - Em **Projeto padr√£o** (Default project), selecione **Livraria.Infra**
+5. Execute o comando:
 
-      ```powershell
-      Update-Database
-      ```
+   ```powershell
+   Update-Database
+   ```
 
-3. A API estar· disponÌvel em:
+3. A API estar√° dispon√≠vel em:
 
    * HTTP:  `http://localhost:5124`
    * HTTPS: `https://localhost:5124`
 
-4. Para acessar a documentaÁ„o Swagger (apenas em Development): Para acessar a documentaÁ„o Swagger (apenas em Development):
+4. Para acessar a documenta√ß√£o Swagger (apenas em Development): Para acessar a documenta√ß√£o Swagger (apenas em Development):
 
    ```
    https://localhost:5124/swagger/index.html
@@ -89,15 +91,15 @@ Este projeto, chamado **Livraria**, È uma **API RESTful** em **.NET 8.0**, com *
 
 ---
 
-## Comandos ˙teis
+## Comandos √∫teis
 
-| Comando                         | DescriÁ„o                                 |
+| Comando                         | Descri√ß√£o                                 |
 | ------------------------------- | ----------------------------------------- |
 | `docker-compose up -d`          | Inicia os containers em background        |
 | `docker-compose logs -f`        | Exibe logs de todos os containers         |
 | `docker-compose down -v`        | Para e remove containers, redes e volumes |
 | `dotnet ef migrations add Nome` | Cria nova migration no projeto EF Core    |
-| `dotnet ef database update`     | Aplica migraÁıes pendentes                |
+| `dotnet ef database update`     | Aplica migra√ß√µes pendentes                |
 
 ---
 
@@ -111,4 +113,4 @@ docker-compose down -v
 
 ---
 
-> Pronto para rodar! Em caso de d˙vidas, abra uma issue no repositÛrio.
+> Pronto para rodar! Em caso de d√∫vidas, abra uma issue no reposit√≥rio.
