@@ -89,5 +89,23 @@ namespace Livraria.Api.Controllers.v1
                 return Ok();
             });
         }
+
+        [HttpGet("filtrar")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<LivroViewModel>))]
+        public async Task<IActionResult> Filtrar([FromQuery] LivroFilterDto filtro)
+        {
+            return await ExecuteAsync(async () =>
+            {
+                var resultado = await _livroService.SearchAsync(filtro);
+
+                if (!resultado.Items.Any())
+                {
+                    return NotFound();
+                }
+
+                return Ok(resultado);
+            });
+        }
+
     }
 }

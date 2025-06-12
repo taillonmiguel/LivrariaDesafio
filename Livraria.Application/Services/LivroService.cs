@@ -1,9 +1,11 @@
 ﻿using Livraria.Application.Dtos;
 using Livraria.Application.Interfaces;
 using Livraria.Application.ViewModels;
+using Livraria.Domain.Dto;
 using Livraria.Domain.Entities;
 using Livraria.Domain.Repositories;
 using Livraria.Shared.DomainValidation;
+using Livraria.Shared.Dto;
 
 namespace Livraria.Application.Services
 {
@@ -99,6 +101,29 @@ namespace Livraria.Application.Services
             _domainValidation.EnsureValid();
 
             _repository.Remove(livro);
+        }
+
+        public async Task<PagedResult<LivroViewModel>> SearchAsync(LivroFilterDto dto)
+        {
+            var filtro = new LivroFilter(dto.LivroId, dto.AutorId, dto.Active,
+                                         dto.Search, dto.Page, dto.PageSize);
+
+            var pageEntities = await _repository.SearchAsync(filtro);
+
+            var viewModels = pageEntities.Items.Select(l => new LivroViewModel
+            {
+                Id = l.Id,
+                Titulo = l.Titulo,
+                Descricao = l.Descricao,
+                AutorId = l.AutorId,
+                GeneroId = l.GeneroId
+            }).ToList();
+
+            return new PagedResult<LivroViewModel>(
+                viewModels,
+                pageEntities.TotalItems,
+                pageEntities.Page,
+                pageEntities.PageSize);
         }
     }
 }
