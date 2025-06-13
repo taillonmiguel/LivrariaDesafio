@@ -23,7 +23,7 @@ Este projeto, chamado **Livraria**, é uma **API RESTful** em **.NET 8.0**, com 
 
    ```bash
    git clone https://github.com/taillonmiguel/livraria.api
-   cd LivrariaDesafio
+   cd livraria.api
    ```
 
 2. Verifique o arquivo `.env` existente na raiz. Ele já contém as variáveis padrão para PostgreSQL e ASP.NET Core:
