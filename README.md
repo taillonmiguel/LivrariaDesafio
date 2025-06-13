@@ -22,7 +22,7 @@ Este projeto, chamado **Livraria**, é uma **API RESTful** em **.NET 8.0**, com 
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/taillonmiguel/LivrariaDesafio.git
+   git clone https://github.com/taillonmiguel/livraria.api
    cd LivrariaDesafio
    ```
 
